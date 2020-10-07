@@ -1,0 +1,28 @@
+.box{
+    margin-left: 20px;
+}
+.container{
+    width: 380px;
+    height: 400px;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.h2{
+    text-align: center;
+    color: rgb(110, 183, 252);
+}
+.span{
+    color: #000;
+    cursor: pointer;
+    animation: 1s;
+}
+.activeSpan{
+    color: rgb(78, 210, 250);
+}
+
+.card{
+    width: 300px;
+}

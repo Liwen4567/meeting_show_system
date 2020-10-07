@@ -1,0 +1,10 @@
+.remberPsw{
+    float: right;
+}
+
+.submitBtn{
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 20px;
+}

@@ -1,0 +1,57 @@
+.person_container{
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+.body_container{
+    height: 300px;
+    width: 800px;
+    display: flex;
+    justify-content: space-around;
+}
+.person-left{
+    padding-top: -100px;
+}
+
+/* .person-left li{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.person-left li:first-child{
+    margin-top: 0;
+} */
+
+/* .personRouter{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+
+.selected{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: #1890ff;
+} */
+
+.person-right{
+    width: 520px;
+    height: 300px;
+}
+
+.ant-menu, .ant-menu-light, .ant-menu-root, .ant-menu-inline{
+    flex-wrap: wrap;
+    width: 200px;
+}

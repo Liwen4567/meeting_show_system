@@ -1,0 +1,38 @@
+html,
+body {
+    background-image: linear-gradient(to bottom, rgb(250, 245, 245), rgb(255, 255, 255));
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: none
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+
+.containerBox {
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px rgb(224, 222, 222);
+    background-color: #fff;
+    padding: 10px;
+}
+
+::-webkit-scrollbar {
+    display: none
+}

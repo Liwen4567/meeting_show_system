@@ -1,0 +1,34 @@
+.alterGuest-container{
+    width: 100%;
+}
+
+.alterGuest-item{
+    width: 400px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.alterGuest-item span{
+    display: block;
+    float: left;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+}
+
+.alterGuest-item Input{
+    display: block;
+    float: left;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+}
+
+.alterGuest-btn{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-left: 210px;
+}

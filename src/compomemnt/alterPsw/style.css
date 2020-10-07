@@ -1,0 +1,33 @@
+.alterPsw-container{
+    width: 520px;
+}
+
+.alterPsw-item{
+    width: 400px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.alterPsw-item span{
+    display: block;
+    float: left;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+}
+
+.alterPsw-item Input{
+    display: block;
+    float: left;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+}
+
+.alterPsw-btn{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    margin-left: 235px;
+}

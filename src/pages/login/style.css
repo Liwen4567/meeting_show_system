@@ -1,0 +1,31 @@
+
+.login-container{
+    width: 960px;
+    height: 460px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-top: 60px;
+}
+
+.login-left{
+    float: left;
+    width: 444px;
+    height: 360px;
+    background: url('../../assets/images/login-bac@2x.png');
+    background-size: 444px 360px;
+}
+.login-right{
+    float: left;
+    width: 476px;
+    height: 360px;
+}
+
+.login-right h2{
+    list-style-type: none;
+    padding-left: 270px;
+    color: #00a0e9;
+}
+
+.login-submit{
+    margin-top: 20px;
+}

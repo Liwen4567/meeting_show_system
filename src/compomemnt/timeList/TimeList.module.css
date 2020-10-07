@@ -1,0 +1,11 @@
+.container{
+    width: 360px;
+    height: 400px;
+    overflow-y: auto;
+    
+}
+
+.h2{
+    text-align: center;
+    color: rgb(110, 183, 252);
+}
