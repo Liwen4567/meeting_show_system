@@ -12,7 +12,7 @@ import '../.././style/global.css'
 export const IdContext = createContext()
 
 function Active() {
-    const [activeId,setActiveId] = useState(1)
+    const [activeId,setActiveId] = useState()
     
     // useEffect(()=>{
     //     console.log(activeId)

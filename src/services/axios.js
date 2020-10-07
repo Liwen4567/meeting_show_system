@@ -47,12 +47,12 @@ instance.interceptors.request.use(config => {
 //响应拦截
 instance.interceptors.response.use(config => {
     // 接收前做什么
-    const { code } = config.data.code || "";
-    if(code === "200" && code === ""){
-        message.success(config.data.message || "完成")
+    const  code  = config.data.code;
+    console.log(code)
+    if(code == 200 || code == 0){
+        message.success(config.data.msg || "完成")
         return(config.data)
     }else{
-
         message.error(config.data.msg || "请求失败");
         return(config.data)
     }

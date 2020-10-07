@@ -18,33 +18,56 @@ function TimeList(params) {
    useEffect( async ()=>{
     await getActive()
     .then((res)=>{
-      if(res.code === 0 ||res.code === "0"){
+    //   res = {
+    //     "msg": "success",
+    // "code": 0,
+    // "data": [
+    //     {
+    //         "id": 1,
+    //         "location": "研究中心",
+    //         "title": "参观",
+    //         "content": "由张老师带队参观研究中心",
+    //         "startTime": "2020-10-04 12:44:11",
+    //         "endTime": "2020-10-05 12:44:14"
+    //     },
+    //     {
+    //         "id": 2,
+    //         "location": "校史馆",
+    //         "title": "参观校史馆",
+    //         "content": "校长带领参观校史馆",
+    //         "startTime": "2020-10-07 12:51:29",
+    //         "endTime": "2020-10-08 12:51:34"
+    //     }
+    // ]
+    //   }
+      if(res.code == 0){
         setActiveList(res.data)
-          chooesNowStep(res)
+        chooesNowStep(res)
       } 
-        console.log(res) 
+        //console.log(res) 
     }).catch((err)=>{
         console.log(err)
-
     })
   },[])
 
   const chooesNowStep = (res) =>{
+    //console.log(res)
     let a = 0
-    for(let i = 0;i<res.length;i++){
-      if(res[i].startTime.replace(/-/g,"").replace(/ /g,"").replace(/:/g,"")<=nowData){
+    for(let i = 0;i<res.data.length;i++){
+      if(res.data[i].startTime.replace(/-/g,"").replace(/ /g,"").replace(/:/g,"")>=nowData){
          a = i    
       }
     }
     setNowStep(a)  
+    //console.log(activeList[a])
     document.getElementById('nowstep').scrollIntoView() 
-    console.log("dawda")
+    //console.log("dawda")
   }
 
   const clickActive = (e)=>{
     changeId(activeList[Number(e.target.className)].id)
   } 
-
+  
 
   return (
     <div className="containerBox">
@@ -102,83 +125,3 @@ export default TimeList
     return currentdate;
   }
 
-
-   // {
-    //     id: 1,
-    //     location: "研究中心",
-    //     title: "参观",
-    //     content: "由张老师带队参观研究中心",
-    //     startTime: "2020-10-04 12:44:11",
-    //     endTime: "2020-10-05 12:44:14"
-    // },
-    // {
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 1,
-    //   location: "研究中心",
-    //   title: "参观1",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-04 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 3,
-    //   location: "研究中心",
-    //   title: "参观4",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-06 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },{
-    //   id: 2,
-    //   location: "研究中心",
-    //   title: "参观2",
-    //   content: "由张老师带队参观研究中心",
-    //   startTime: "2020-10-08 12:44:11",
-    //   endTime: "2020-10-05 12:44:14"
-    // },

@@ -1,6 +1,13 @@
 html,
 body {
     background-image: linear-gradient(to bottom, rgb(250, 245, 245), rgb(255, 255, 255));
+    -webkit-user-select:none;
+
+     -moz-user-select:none;
+
+     -ms-user-select:none;
+
+     user-select:none;
 }
 
 li {

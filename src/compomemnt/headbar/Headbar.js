@@ -6,6 +6,7 @@ import style from './Headbar.module.css'
 import { NavLink, Router, Route } from 'react-router-dom'
 import { ContactsTwoTone, IdcardTwoTone, BellTwoTone, UserOutlined } from '@ant-design/icons'
 import '../.././style/global.css'
+import logo from '../../assets/images/logo-yuan.png'
 
 
 
@@ -19,6 +20,7 @@ function Headbar(params) {
   return (
     <div className="containerBox">
       <div className={style.container}>
+        <img src={logo}  className={style.img}/>
         <ul>
           <li>
             <NavLink to={{pathname:'/active'}} activeClassName={style.nowkey}><ContactsTwoTone />   我的活动</NavLink>
