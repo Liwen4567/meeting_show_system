@@ -66,22 +66,18 @@ export const getGuest = (id) => {
 //修改嘉宾信息
 export const alterGuest = (id, name, telphone, email, job) => {
         return put(config.ALTERGUEST, {
-                data: {
-                        "email": email,
-                        "job": job,
-                        "mobile": telphone,
-                        "userId": id,
-                        "username": name
-                }
+                "email": email,
+                "job": job,
+                "mobile": telphone,
+                "userId": id,
+                "username": name       
         })
 }
 
 //修改嘉宾密码
 export const alterPsw = (oldPsw, newPsw) => {
         return post(config.ALTERPSW, {
-                data: {
-                        "oldPsw": oldPsw,
-                        "newPsw": newPsw,
-                }
+                "old": oldPsw,
+                "nw": newPsw,
         })
 }

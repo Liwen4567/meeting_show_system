@@ -8,17 +8,13 @@ import App from './App';
 import Active from './pages/active/Active'
 import Login from './pages/login/Login'
 import Person from './pages/personInformation/Person'
-import {BrowserRouter as Router,Redirect,Route} from 'react-router-dom'
+import {BrowserRouter ,Redirect,Route} from 'react-router-dom'
+import MyRouter from './router/myRouter'
 
 ReactDOM.render( 
-  <Router>
-  <div>
-      <Route path={'/login'} component={Login}></Route>
-      <Route path={'/active'} component={Active}></Route>
-      <Route path={'/person/guest'} component={Person}></Route>
-      <Redirect to={'/login'} /> 
-  </div>
-</Router>
+  <BrowserRouter>
+  <MyRouter />
+  </BrowserRouter>
   , document.getElementById('root'));
 
 

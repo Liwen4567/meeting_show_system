@@ -23,13 +23,13 @@ function Headbar(params) {
         <img src={logo}  className={style.img}/>
         <ul>
           <li>
-            <NavLink to={{pathname:'/active'}} activeClassName={style.nowkey}><ContactsTwoTone />   我的活动</NavLink>
+            <NavLink to={'/'} activeClassName={style.nowkey}><ContactsTwoTone />   我的活动</NavLink>
           </li>
           <li>
-            <NavLink to={{pathname:'/person/guest'}} activeClassName={style.nowkey}><IdcardTwoTone/>   我的信息</NavLink>
+            <NavLink to={'/person'} activeClassName={style.nowkey}><IdcardTwoTone/>   我的信息</NavLink>
           </li>
           <li>
-            <NavLink to={{pathname:'/login'}} activeClassName={style.nowkey}><BellTwoTone/>  退出登录</NavLink>
+            <NavLink to={'/login'} activeClassName={style.nowkey}><BellTwoTone/>   退出登录</NavLink>
           </li>
         </ul>
       </div>

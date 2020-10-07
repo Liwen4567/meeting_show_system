@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { login } from '../../services/api.js'
 import {setToken} from '../../utils/session.js'
@@ -23,6 +23,7 @@ const tailLayout = {
 };
 
 function MyForm(props) {
+  const history = useHistory();
   const onFinish = (values) => {
     login(values.phone, values.password).then(response => {
       if(response.code === 0){
@@ -35,7 +36,7 @@ function MyForm(props) {
         setEmail(user.email)
         //此处跳转
         //response.data.user是一个对象，包含{userId, username, mobile, email, job}
-        props.history.push('/person/guest')
+        history.push('/')
       }
     }).catch(error => {
       console.log(error)
@@ -95,5 +96,5 @@ function MyForm(props) {
   );
 };
 
-export default withRouter(MyForm)
+export default MyForm
 

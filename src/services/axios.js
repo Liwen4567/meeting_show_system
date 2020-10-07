@@ -34,7 +34,6 @@ export const del = (url, data)=>{
 //请求拦截
 instance.interceptors.request.use(config => {
     // 发送请求前做什么
-    config.headers.token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNyIsImlhdCI6MTYwMTk4MTcwNCwiZXhwIjoxNjAyNTg2NTA0fQ.7OTP-ELdBkJAEAr5Cc8p34hhe0Z6Z0QNGwgOFgJfYzhfWAWhPcw7JLxczMBj6t-MX2OHDq5UdtIRSEcKBRPskg"
     return config
   },
   error => {

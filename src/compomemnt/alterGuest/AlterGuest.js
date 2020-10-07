@@ -33,9 +33,16 @@ function AlterGuest(){
     },[])
 
     function handleClick(){
-        alterGuest(6, userName, mobile, email, job).then(response => {
+        alterGuest(getId, userName, mobile, email, job).then(response => {
             console.log('成功',response)
             console.log(userName,mobile,email,job)
+            //请求成功响应
+            if(response.code===0){
+                setUserName(userName)
+                setMobile(mobile)
+                setEmail(email)
+                setJob(job)
+            }
         }).catch(error => {
             console.log('失败',error)
         })

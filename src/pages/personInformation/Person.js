@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Guest from '../../compomemnt/guestInformation/Guest'
 import AlterGuest from '../../compomemnt/alterGuest/AlterGuest'
 import AlterPsw from '../../compomemnt/alterPsw/AlterPsw'
@@ -19,9 +19,12 @@ function Person() {
                         <Nav></Nav>
                     </div>
                     <div className='person-right'>
+
                         <Route path='/person/guest' component={Guest}></Route>
                         <Route path='/person/altrInformation' component={AlterGuest}></Route>
                         <Route path='/person/alterPassword' component={AlterPsw}></Route>
+                        <Redirect to={'/person/guest'} />
+
                     </div>
                     </div>
                 </div>
