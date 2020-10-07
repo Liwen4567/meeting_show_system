@@ -14,14 +14,14 @@ function DetailActive(params) {
     const { activeId, changeId } = useContext(IdContext)
     const [showWhat, setShowWhat] = useState(1)
     const [detailList, setDetailList] = useState()
-    const [detailList_active, setDetailList_active] = useState({
+    const [detailList_active, setDetailList_active] = useState([{
         "id": "",
         "location": "暂无",
         "title": "暂无",
         "content": "暂无",
         "startTime": "暂无",
         "endTime": "暂无"
-    })
+    }])
     const [detailList_other, setDetailList_other] = useState([
                     {
                         "username": "暂无",
@@ -47,17 +47,17 @@ function DetailActive(params) {
                         "onUse": ""
                     }
                 ])
-    const [detailList_room, setDetailList_room] = useState({
+    const [detailList_room, setDetailList_room] = useState([{
                     "id": "",
                     "location": "暂无",
                     "roomType": "暂无",
                     "roomNumber": "暂无"
-                })
+                }])
     useEffect(
         () => {
              getDetailActive(activeId)
                 .then((res) => {
-                    //console.log(res.data)
+                    console.log(res.data)
                     // res.data = {
                     //     "other": null,
                     //     "volunteer": null,
@@ -66,16 +66,16 @@ function DetailActive(params) {
                     //     "room": null
                     // }
                     if(res.data.active != null){
-                        setDetailList_active(res.data.active)
+                        setDetailList_active([res.data.active])
                     }else{
-                        setDetailList_active({
+                        setDetailList_active([{
                             "id": "",
                             "location": "暂无",
                             "title": "暂无",
                             "content": "暂无",
                             "startTime": "暂无",
                             "endTime": "暂无"
-                        })
+                        }])
                     }
                     if(res.data.other != null && res.data.other != []){
                         setDetailList_other(res.data.other)
@@ -105,12 +105,12 @@ function DetailActive(params) {
                     if(res.data.room != null && res.data.room != []){
                         setDetailList_room(res.data.room)
                     }else{
-                        setDetailList_room({
+                        setDetailList_room([{
                             "id": "",
                             "location": "暂无",
                             "roomType": "暂无",
                             "roomNumber": "暂无"
-                        })
+                        }])
                     }
                     if(res.data.volunteer != null && res.data.volunteer != []){
                         setDetailList_volunteer(res.data.volunteer)
@@ -157,17 +157,22 @@ function DetailActive(params) {
                     {
                         
                         showWhat == 1 && 
-                        <div className={style.cardBox}>
-                            <div className="containerBox">
-                                <Card className={style.card}>
-                                    <span>名称:<Input className={style.input} value={detailList_active.title} /></span>
-                                    <span>地点:<Input className={style.input} value={detailList_active.location} /></span>
-                                    <span>开始时间:<Input className={style.input} value={detailList_active.startTime} /></span>
-                                    <span>结束时间:<Input className={style.input} value={detailList_active.endTime} /></span>
-                                    <span>内容:<TextArea className={style.input} value={detailList_active.content} /></span>
-                                </Card>
-                            </div>
-                        </div>
+                        detailList_active.map((item, index) => {
+                            return (
+                                <div className={style.cardBox}>
+                                    <div className="containerBox">
+                                    <Card className={style.card}>
+                                        <span>名称:<Input className={style.input} value={item.title} /></span>
+                                        <span>地点:<Input className={style.input} value={item.location} /></span>
+                                        <span>开始时间:<Input className={style.input} value={item.startTime} /></span>
+                                        <span>结束时间:<Input className={style.input} value={item.endTime} /></span>
+                                        <span>内容:<TextArea className={style.input} value={item.content} /></span>
+                                    </Card>
+                                    </div>
+                                </div>
+                            )
+                        })
+                        
 
 
                     }
@@ -191,15 +196,20 @@ function DetailActive(params) {
                     }
                     {
                         showWhat == 3 &&
-                        <div className={style.cardBox}>
-                            <div className="containerBox">
-                                <Card className={style.card}>
-                                    <span>酒店位置:<Input className={style.input} value={detailList_room.location} /></span>
-                                    <span>房间型号:<Input className={style.input} value={detailList_room.roomType} /></span>
-                                    <span>房间号:<Input className={style.input} value={detailList_room.roomNumber} /></span>
-                                </Card>
-                            </div>
-                        </div>
+                        detailList_room.map((item, index) => {
+                            return (
+                                <div className={style.cardBox}>
+                                    <div className="containerBox">
+                                    <Card className={style.card}>
+                                        <span>酒店位置:<Input className={style.input} value={item.location} /></span>
+                                        <span>房间型号:<Input className={style.input} value={item.roomType} /></span>
+                                        <span>房间号:<Input className={style.input} value={item.roomNumber} /></span>
+                                    </Card>
+                                    </div>
+                                </div>
+                            )
+                        })
+                        
 
 
                     }

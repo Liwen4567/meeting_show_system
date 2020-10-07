@@ -8,7 +8,7 @@ import TimeList from '../../compomemnt/timeList/TimeList'
 import DetailActive from '../../compomemnt/detailActive/DetailActive'
 import { Layout } from 'antd';
 import style from './Active.module.css'
-import '../.././style/global.css'
+
 export const IdContext = createContext()
 
 function Active() {

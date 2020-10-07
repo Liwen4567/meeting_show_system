@@ -49,7 +49,7 @@ instance.interceptors.response.use(config => {
     const  code  = config.data.code;
     console.log(code)
     if(code == 200 || code == 0){
-        message.success(config.data.msg || "完成")
+        //message.success(config.data.msg || "完成")
         return(config.data)
     }else{
         message.error(config.data.msg || "请求失败");

@@ -36,7 +36,7 @@ function MyForm(props) {
         setEmail(user.email)
         //此处跳转
         //response.data.user是一个对象，包含{userId, username, mobile, email, job}
-        history.push('/')
+        history.push('/person')
       }
     }).catch(error => {
       console.log(error)

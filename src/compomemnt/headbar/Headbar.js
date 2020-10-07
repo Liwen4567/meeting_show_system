@@ -23,7 +23,7 @@ function Headbar(params) {
         <img src={logo}  className={style.img}/>
         <ul>
           <li>
-            <NavLink to={'/'} activeClassName={style.nowkey}><ContactsTwoTone />   我的活动</NavLink>
+            <NavLink to={'/active'} activeClassName={style.nowkey}><ContactsTwoTone />   我的活动</NavLink>
           </li>
           <li>
             <NavLink to={'/person'} activeClassName={style.nowkey}><IdcardTwoTone/>   我的信息</NavLink>

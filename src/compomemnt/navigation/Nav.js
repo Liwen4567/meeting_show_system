@@ -20,7 +20,7 @@ function Nav(props) {
           selectedKeys={[current]}
           mode="inline"
         >
-            <Menu.Item key="1"><Link to={'/person/guest'}>用户信息</Link></Menu.Item>
+            <Menu.Item key="1"><Link to={'/person/'}>用户信息</Link></Menu.Item>
             <Menu.Item key="2"><Link to={'/person/altrInformation'}>修改信息</Link></Menu.Item>
             <Menu.Item key="3"><Link to={'/person/alterPassword'}>修改密码</Link></Menu.Item>
 

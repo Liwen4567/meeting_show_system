@@ -14,9 +14,10 @@ function TimeList(params) {
   const [activeList, setActiveList] = useState([])
   const [nowStep, setNowStep] = useState(0)
   const {activeId, changeId} = useContext(IdContext)
+
   
-   useEffect( async ()=>{
-    await getActive()
+   useEffect(()=>{
+    getActive()
     .then((res)=>{
     //   res = {
     //     "msg": "success",
