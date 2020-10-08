@@ -5,7 +5,7 @@ import { message } from 'antd';
 import {getToken} from '../utils/session.js'
 
 const instance = axios.create({
-  baseURL: '/api', // 请求地址
+  baseURL: 'http://120.24.93.68:8080', // 请求地址/api
   timeout: 5000, //请求超时时间
   withCredentials: true,  // 是否允许跨域使用cookies
   //headers: {'X-Custom-Header': 'foobar'} // 设置请求头

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Input, Button } from 'antd';
+import { Input, Button, message } from 'antd';
 import {getGuest, alterGuest} from '../../services/api.js'
 import {getId, getJob, getEmail, getMobile, getUserName, setId, setEmail, setJob, setMobile, setUserName} from '../../utils/session.js'
 import './style.css'
@@ -35,13 +35,14 @@ function AlterGuest(){
     function handleClick(){
         alterGuest(getId, userName, mobile, email, job).then(response => {
             console.log('成功',response)
-            console.log(userName,mobile,email,job)
+            //console.log(userName,mobile,email,job)
             //请求成功响应
             if(response.code===0){
                 setUserName(userName)
                 setMobile(mobile)
                 setEmail(email)
                 setJob(job)
+                message.success("修改成功")
             }
         }).catch(error => {
             console.log('失败',error)

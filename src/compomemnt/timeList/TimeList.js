@@ -73,16 +73,17 @@ function TimeList(params) {
   return (
     <div className="containerBox">
       <h2 className={style.h2}>活动列表</h2>
+      <hr />
       <div className={style.container}>
       <Steps current={nowStep} direction="vertical" size="small" >
         {
           activeList.map((item, index)=>{
             return(
-              <>
               <Step 
                 key = {index}
                 icon = {<HistoryOutlined />}
-                title= {<p><a
+                title= {<p key={index}><a
+                  key={index}
                   className = {index}
                   onClick={(e)=>{
                   clickActive(e)
@@ -93,8 +94,6 @@ function TimeList(params) {
                 description={item.content}
                 id = {nowStep==index?"nowstep":"otherstep"}
               />
-              </>
-
             )
           })
         }

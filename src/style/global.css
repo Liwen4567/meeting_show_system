@@ -1,6 +1,7 @@
 html,
 body {
-    background-image: linear-gradient(to bottom, rgb(250, 245, 245), rgb(255, 255, 255));
+    /* background-image: linear-gradient(to bottom, rgb(250, 245, 245), rgb(255, 255, 255)); */
+    background-image: linear-gradient(to bottom, rgb(203, 245, 255), rgb(255, 255, 255));
     -webkit-user-select:none;
 
      -moz-user-select:none;
@@ -8,6 +9,7 @@ body {
      -ms-user-select:none;
 
      user-select:none;
+
 }
 
 li {
@@ -43,3 +45,4 @@ button {
 ::-webkit-scrollbar {
     display: none
 }
+

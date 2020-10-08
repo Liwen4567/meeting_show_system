@@ -7,7 +7,9 @@ import Nav from '../../compomemnt/navigation/Nav'
 import Headbar from '../../compomemnt/headbar/Headbar'
 import './style.css'
 
-import { renderRoutes } from 'react-router-config'
+
+
+
 
 function Person() {
     return (
@@ -20,12 +22,10 @@ function Person() {
                         <Nav></Nav>
                     </div>
                     <div className='person-right'>
-
                         <Route path='/person/' exact component={Guest}></Route>
                         <Route path='/person/altrInformation' component={AlterGuest}></Route>
                         <Route path='/person/alterPassword' component={AlterPsw}></Route>
-                        <Redirect from={"*"} to={'/person/'} />
-                         
+                        <Redirect from={"*"} to={'/person/'} />                    
                     </div>
                     </div>
                 </div>

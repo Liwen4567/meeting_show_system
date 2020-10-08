@@ -13,117 +13,33 @@ const { TextArea } = Input;
 function DetailActive(params) {
     const { activeId, changeId } = useContext(IdContext)
     const [showWhat, setShowWhat] = useState(1)
-    const [detailList, setDetailList] = useState()
-    const [detailList_active, setDetailList_active] = useState([{
-        "id": "",
-        "location": "暂无",
-        "title": "暂无",
-        "content": "暂无",
-        "startTime": "暂无",
-        "endTime": "暂无"
-    }])
-    const [detailList_other, setDetailList_other] = useState([
-                    {
-                        "username": "暂无",
-                        "job": "暂无",
-                        "id": ""
-                    }
-                ])
-    const [detailList_volunteer, setDetailList_volunteer] = useState([
-                    {
-                        "id": "",
-                        "name": "暂无",
-                        "telphone": "暂无",
-                        "email": "暂无"
-                    }
-                ])
-    const [detailList_car, setDetailList_car] = useState([
-                    {
-                        "id": "",
-                        "driverName": "暂无",
-                        "carNumber": "暂无",
-                        "carType": "暂无",
-                        "driverTelphone": "暂无",
-                        "onUse": ""
-                    }
-                ])
-    const [detailList_room, setDetailList_room] = useState([{
-                    "id": "",
-                    "location": "暂无",
-                    "roomType": "暂无",
-                    "roomNumber": "暂无"
-                }])
+    const [detailList_active, setDetailList_active] = useState([])
+    const [detailList_other, setDetailList_other] = useState([])
+    const [detailList_volunteer, setDetailList_volunteer] = useState([])
+    const [detailList_car, setDetailList_car] = useState([])
+    const [detailList_room, setDetailList_room] = useState([])
     useEffect(
         () => {
              getDetailActive(activeId)
                 .then((res) => {
-                    console.log(res.data)
+                    //console.log(res.data)
                     // res.data = {
-                    //     "other": null,
-                    //     "volunteer": null,
-                    //     "car": null,
+                    //     "other": [],
+                    //     "volunteer": [],
+                    //     "car": [],
                     //     "active": null,
-                    //     "room": null
+                    //     "room": []
                     // }
-                    if(res.data.active != null){
+                    if(res.data.active != null){                       
                         setDetailList_active([res.data.active])
                     }else{
-                        setDetailList_active([{
-                            "id": "",
-                            "location": "暂无",
-                            "title": "暂无",
-                            "content": "暂无",
-                            "startTime": "暂无",
-                            "endTime": "暂无"
-                        }])
+                        setDetailList_active([])
                     }
-                    if(res.data.other != null && res.data.other != []){
-                        setDetailList_other(res.data.other)
-                    }else{
-                        setDetailList_other([
-                            {
-                                "username": "暂无",
-                                "job": "暂无",
-                                "id": ""
-                            }
-                        ])
-                    }
-                    if(res.data.car != null && res.data.car != []){
-                        setDetailList_car(res.data.car)
-                    }else{
-                        setDetailList_car([
-                            {
-                                "id": "",
-                                "driverName": "暂无",
-                                "carNumber": "暂无",
-                                "carType": "暂无",
-                                "driverTelphone": "暂无",
-                                "onUse": ""
-                            }
-                        ])
-                    }
-                    if(res.data.room != null && res.data.room != []){
-                        setDetailList_room(res.data.room)
-                    }else{
-                        setDetailList_room([{
-                            "id": "",
-                            "location": "暂无",
-                            "roomType": "暂无",
-                            "roomNumber": "暂无"
-                        }])
-                    }
-                    if(res.data.volunteer != null && res.data.volunteer != []){
-                        setDetailList_volunteer(res.data.volunteer)
-                    }else{
-                        setDetailList_volunteer([
-                            {
-                                "id": "",
-                                "name": "暂无",
-                                "telphone": "暂无",
-                                "email": "暂无"
-                            }
-                        ])
-                    }
+                    setDetailList_other(res.data.other)
+                    setDetailList_car(res.data.car)
+                    setDetailList_room(res.data.room)
+                    setDetailList_volunteer(res.data.volunteer)
+                    
                     
                 }).catch((err) => {
                     console.log(err)
@@ -135,6 +51,7 @@ function DetailActive(params) {
         <div className={style.box}>
             <div className="containerBox">
                 <h2 className={style.h2}>活动详情</h2>
+                <hr />
                 <Breadcrumb className={style.Breadcrumb}>
                         <Breadcrumb.Item onClick={() => { setShowWhat(1) }}>
                             <span className={showWhat == 1 ? style.activeSpan : style.span}>活动详情</span>
@@ -159,7 +76,7 @@ function DetailActive(params) {
                         showWhat == 1 && 
                         detailList_active.map((item, index) => {
                             return (
-                                <div className={style.cardBox}>
+                                <div key={index} className={style.cardBox}>
                                     <div className="containerBox">
                                     <Card className={style.card}>
                                         <span>名称:<Input className={style.input} value={item.title} /></span>
@@ -198,7 +115,7 @@ function DetailActive(params) {
                         showWhat == 3 &&
                         detailList_room.map((item, index) => {
                             return (
-                                <div className={style.cardBox}>
+                                <div key={index} className={style.cardBox}>
                                     <div className="containerBox">
                                     <Card className={style.card}>
                                         <span>酒店位置:<Input className={style.input} value={item.location} /></span>

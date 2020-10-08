@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Button } from 'antd';
+import { Input, Button, message } from 'antd';
 import {withRouter,useHistory} from 'react-router-dom'
 import {alterPsw} from '../../services/api.js'
 import {clear} from '../../utils/session.js'
@@ -11,8 +11,11 @@ function AlterPsw(props){
     const [newPsw, setNewPsw] = useState('')
     function handleClick(){
         alterPsw(oldPsw, newPsw).then(response => {
+            console.log(response)
+            //message.success("修改成功")
+            //if()
             clear()
-            history.push('/login')
+            //history.push('/login')
         }).catch(error => {
             console.log('失败',error)
         })

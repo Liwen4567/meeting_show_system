@@ -27,7 +27,8 @@
 
 .card{
     width: 300px;  
-    background-image: linear-gradient(to bottom, rgb(250, 245, 245), rgb(253, 252, 252));
+    /* background-image: linear-gradient(to bottom, rgb(250, 245, 245), rgb(253, 252, 252)); */
+    background-image: linear-gradient(to bottom, rgb(233, 248, 252), rgb(255, 255, 255));
 }
 .input{
     color: rgb(121, 119, 119);

@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import Active from '../pages/active/Active'
 import Login from '../pages/login/Login'
 import Person from '../pages/personInformation/Person'
-import Main from '../pages/main/Main'
 import AlterGuest from '../compomemnt/alterGuest/AlterGuest'
 import AlterPsw from '../compomemnt/alterPsw/AlterPsw'
 import Guest from '../compomemnt/guestInformation/Guest'
