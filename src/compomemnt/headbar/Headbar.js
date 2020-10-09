@@ -1,9 +1,9 @@
 //顶部导航bar
 
 import React, { Component, useState } from 'react';
-import { Menu, Avatar, Modal } from 'antd';
+import { Menu, Avatar, Modal,Dropdown } from 'antd';
 import style from './Headbar.module.css'
-import { NavLink, Router, Route, useHistory } from 'react-router-dom'
+import { NavLink, Router, Route, useHistory, Link } from 'react-router-dom'
 import { ContactsTwoTone, IdcardTwoTone, BellTwoTone, UserOutlined } from '@ant-design/icons'
 import '../.././style/global.css'
 import logo from '../../assets/images/logo-yuan.png'
@@ -36,6 +36,32 @@ function Headbar(params) {
     });
   }
 
+
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <Link to={'/person/'}>
+          详细信息
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to={'/person/altrInformation'}>
+          修改信息
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to={'/person/alterPassword'}>
+          修改密码
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <a onClick={()=>{logout()}} >
+          退出登录
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <div className="containerBox">
       <div className={style.container}>
@@ -48,12 +74,15 @@ function Headbar(params) {
             <NavLink to={'/person'} activeClassName={style.nowkey}><IdcardTwoTone />   我的信息</NavLink>
           </li>
           <li className={style.avatar_li}>
-          <span className={style.span}>
-            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className={style.avatar} size={40}/>
-            {" " + getUserName()}
-          </span>
+            <Dropdown overlay={menu} placement="bottomCenter">
+              <span className={style.span}>
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" className={style.avatar} size={40}/>
+                {" " + getUserName()}
+              </span>
+            </Dropdown>  
             {/* <a onClick={()=>{logout()}} ><BellTwoTone />   退出登录</a> */}
           </li>
+
         </ul>
       </div>
     </div>

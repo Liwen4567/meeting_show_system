@@ -9,17 +9,15 @@
 }
 
 .alterPsw-item span{
-    display: block;
     float: left;
     width: 100px;
     height: 30px;
     line-height: 30px;
     text-align: right;
+    margin-bottom: 10px;
 }
 
-.alterPsw-item Input{
-    display: block;
-    float: left;
+.alterPsw-item .changePsw{
     width: 300px;
     height: 30px;
     text-align: center;

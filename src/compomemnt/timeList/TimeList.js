@@ -60,9 +60,7 @@ function TimeList(params) {
       }
     }
     setNowStep(a)  
-    //console.log(activeList[a])
     document.getElementById('nowstep').scrollIntoView() 
-    //console.log("dawda")
   }
 
   const clickActive = (e)=>{

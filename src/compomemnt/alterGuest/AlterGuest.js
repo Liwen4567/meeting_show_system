@@ -9,6 +9,7 @@ function AlterGuest(){
     const [mobile, setMyMobile] = useState('')
     const [email, setMyEmail] = useState('')
     const [job, setMyJob] = useState('')
+    const [isOk, setIsOk] = useState(true)
     useEffect(()=>{
         if(getJob()&&getEmail()&&getMobile()&&getUserName()){
             setMyUserName(getUserName())
@@ -43,6 +44,8 @@ function AlterGuest(){
                 setEmail(email)
                 setJob(job)
                 message.success("修改成功")
+            }else{
+                message.error(response.msg||"修改失败")
             }
         }).catch(error => {
             console.log('失败',error)
@@ -53,21 +56,30 @@ function AlterGuest(){
         <div className='alterGuest-container'>
             <div className='alterGuest-item'>
                 <span>用户名：</span>
-                <Input value={userName} onChange={(e)=>setMyUserName(e.target.value)}/>
+                <Input value={userName} onChange={(e)=>{
+                    setMyUserName(e.target.value)
+                    setIsOk(false)
+                }}/>
             </div>
             <div className='alterGuest-item'>
                 <span>电话：</span>
-                <Input value={mobile} onChange={(e)=>setMyMobile(e.target.value)}/>
+                <Input value={mobile} onChange={(e)=>{setMyMobile(e.target.value) 
+                    setIsOk(false)
+                }}/>
             </div>
             <div className='alterGuest-item'>
                 <span>邮箱：</span>
-                <Input type='email' value={email} onChange={(e)=>setMyEmail(e.target.value)}/>
+                <Input type='email' value={email} onChange={(e)=>{setMyEmail(e.target.value)
+                    setIsOk(false)
+                }}/>
             </div>
             <div className='alterGuest-item'>
                 <span>职位：</span>
-                <Input value={job} onChange={(e)=>setMyJob(e.target.value)}/>
+                <Input value={job} onChange={(e)=>{setMyJob(e.target.value)
+                    setIsOk(false)
+                }}/>
             </div>
-            <Button className='alterGuest-btn' type="primary" onClick={()=>{handleClick()}}>修改信息</Button>
+            <Button className='alterGuest-btn' type="primary" onClick={()=>{handleClick()}} disabled={isOk}>修改信息</Button>
         </div>
     )
 }

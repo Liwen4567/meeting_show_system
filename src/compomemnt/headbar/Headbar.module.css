@@ -39,3 +39,11 @@ a{
    white-space: nowrap;
    overflow: hidden;
 }
+.ant-dropdown-menu, .ant-dropdown-menu-light, .ant-dropdown-menu-root, .ant-dropdown-menu-vertical{
+   width: 200px;
+   background-color: #40a9ff;
+   
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-start;
+}
