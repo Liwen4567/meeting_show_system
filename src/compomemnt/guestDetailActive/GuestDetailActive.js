@@ -3,14 +3,14 @@
 import React, { Component, useEffect, useContext, useState } from 'react';
 import { Breadcrumb, Card, Input } from 'antd';
 import '../.././style/global.css'
-import style from './DetailActive.module.css'
+import style from './GuestDetailActive.module.css'
 import { getActive, getDetailActive } from '../../services/api'
 import { HistoryOutlined } from '@ant-design/icons'
-import { IdContext } from '../../pages/active/Active'
+import { IdContext } from '../../pages/myGuest/MyGuest'
 import { useImmer } from "use-immer";
 const { TextArea } = Input;
 
-function DetailActive(params) {
+function GuestDetailActive(params) {
     const { activeId, changeId } = useContext(IdContext)
     const [showWhat, setShowWhat] = useState(1)
     const [detailList_active, setDetailList_active] = useState([])
@@ -50,7 +50,7 @@ function DetailActive(params) {
     return (
         <div className={style.box}>
             <div className="containerBox">
-                <h2 className={style.h2}>任务详情</h2>
+                <h2 className={style.h2}>活动详情</h2>
                 <hr />
                 <Breadcrumb className={style.Breadcrumb}>
                         <Breadcrumb.Item onClick={() => { setShowWhat(1) }}>
@@ -71,8 +71,7 @@ function DetailActive(params) {
                     </Breadcrumb>
                 <div className={style.container}>
                     
-                    {
-                        
+                    {                      
                         showWhat == 1 && 
                         detailList_active.map((item, index) => {
                             return (
@@ -89,9 +88,6 @@ function DetailActive(params) {
                                 </div>
                             )
                         })
-                        
-
-
                     }
                     {
                         showWhat == 2 &&
@@ -169,4 +165,4 @@ function DetailActive(params) {
     )
 }
 
-export default DetailActive
+export default GuestDetailActive

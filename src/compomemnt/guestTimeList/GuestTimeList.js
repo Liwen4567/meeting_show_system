@@ -1,27 +1,27 @@
-//时间轴
+//嘉宾时间轴
 
 import React, { Component, useContext, useEffect, useState, createContext, useImmer } from 'react';
 import { Steps, message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import '../.././style/global.css'
-import style from './TimeList.module.css'
+import style from './GuestTimeList.module.css'
 import { getActive, getDetailActive, getGuestActive, FinishActive} from '../../services/api'
 import { HistoryOutlined } from '@ant-design/icons'
-import {IdContext} from '../../pages/active/Active'
+import {IdContext} from '../../pages/myGuest/MyGuest'
 import { getId } from '../../utils/session'
 
 const { confirm } = Modal;
 
-function TimeList(params) {
+function GuestTimeList(params) {
   const { Step } = Steps;
   const nowData = getNowFormatDate().replace(/-/g,"").replace(/ /g,"").replace(/:/g,"")
   const [activeList, setActiveList] = useState([])
   const [nowStep, setNowStep] = useState(0)
-  const {activeId, changeId} = useContext(IdContext)
+  const {activeId, changeId, guestId} = useContext(IdContext)
    
   
    useEffect(()=>{
-    getGuestActive(getId())
+    getActive(guestId)
     .then((res)=>{
     //   res = {
     //     "msg": "success",
@@ -33,7 +33,8 @@ function TimeList(params) {
     //         "title": "参观",
     //         "content": "由张老师带队参观研究中心",
     //         "startTime": "2020-10-04 12:44:11",
-    //         "endTime": "2020-10-05 12:44:14"
+    //         "endTime": "2020-10-05 12:44:14",
+    //           "complete": true,
     //     },
     //     {
     //         "id": 2,
@@ -41,7 +42,8 @@ function TimeList(params) {
     //         "title": "参观校史馆",
     //         "content": "校长带领参观校史馆",
     //         "startTime": "2020-10-07 12:51:29",
-    //         "endTime": "2020-10-08 12:51:34"
+    //         "endTime": "2020-10-08 12:51:34",
+    //           "complete": false,
     //     }
     // ]
     //   }
@@ -49,11 +51,11 @@ function TimeList(params) {
         setActiveList(res.data.reverse())
         chooesNowStep(res)
       } 
-        //console.log(res) 
+        console.log(res) 
     }).catch((err)=>{
         console.log(err)
     })
-  },[])
+  },[guestId])
 
   const chooesNowStep = (res) =>{
     //console.log(res)
@@ -70,7 +72,6 @@ function TimeList(params) {
       setNowStep(a) 
       changeId(res.data[a].id)
     }
-
     document.getElementById('nowstep').scrollIntoView() 
   }
 
@@ -80,7 +81,7 @@ function TimeList(params) {
   
 
   const handleFinish = (e,id)=>{
-    showConfirm(Number(id))
+    showConfirm(e,Number(id))
   }
 
 
@@ -94,7 +95,7 @@ function TimeList(params) {
       onOk() {
         console.log('OK');
         FinishActive(id).then(res => {
-          if (res.code== 0) {
+          if (res.code == 0) {
             message.success("提交成功")
             e.disabled = "true"
                     e.style = { 
@@ -122,7 +123,7 @@ function TimeList(params) {
   return (
     <div className={style.box}>
     <div className="containerBox">
-      <h2 className={style.h2}>我的任务</h2>
+      <h2 className={style.h2}>活动列表</h2>
       <hr />
       <div className={style.container}>
       <Steps current={nowStep} direction="vertical" size="small" >
@@ -164,7 +165,7 @@ function TimeList(params) {
                     height: 20 + "px",
                     width: 60 + "px"
                   }} onClick={(e)=>{
-                    handleFinish(e.target, e.target.className)
+                    handleFinish(e.target,e.target.className)
                   }}>{item.complete?"已完成":"确认完成"}</button>
                   </>
                 }
@@ -180,7 +181,7 @@ function TimeList(params) {
   )
 }
 
-export default TimeList
+export default GuestTimeList
 
 
 //转换时间成标准格式

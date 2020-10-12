@@ -8,6 +8,8 @@ import Person from '../pages/personInformation/Person'
 import AlterGuest from '../compomemnt/alterGuest/AlterGuest'
 import AlterPsw from '../compomemnt/alterPsw/AlterPsw'
 import Guest from '../compomemnt/guestInformation/Guest'
+import MyMessage from '../pages/mymessage/MyMessage'
+import MyGuest from '../pages/myGuest/MyGuest'
 
 import {
   BrowserRouter as Router,
@@ -21,9 +23,11 @@ function myRouter() {
   return (
     <Switch>
       <Route path={'/active'} exact component={Active}></Route>
+      <Route path={'/guest'} component={MyGuest}></Route>  
       <Route path={'/person'} component={Person}></Route>     
       <Route path={'/login'} component={Login}></Route>  
-      <Redirect  to={'/login'} />
+      <Route path={'/myMessage'} component={MyMessage}></Route>  
+      <Redirect from={'*'} to={'/login'} />
     </Switch>
   )
 }

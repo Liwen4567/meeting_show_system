@@ -36,7 +36,7 @@ function MyForm(props) {
         setEmail(user.email)
         //此处跳转
         //response.data.user是一个对象，包含{userId, username, mobile, email, job}
-        history.push('/person')
+        history.push('/active')
       }
     }).catch(error => {
       console.log(error)
@@ -48,6 +48,7 @@ function MyForm(props) {
   };
 
   return (
+    <div className="fromBox">
     <Form
       {...layout}
       name="basic"
@@ -56,6 +57,7 @@ function MyForm(props) {
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      size="large"
     >
       <Form.Item
         label="手机号"
@@ -67,7 +69,7 @@ function MyForm(props) {
           },
         ]}
       >
-        <Input />
+        <Input style={{height: 30 + 'px', width: 250 + "px"}}/>
       </Form.Item>
 
       <Form.Item
@@ -80,19 +82,20 @@ function MyForm(props) {
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password style={{height: 30 + 'px', width: 250 + "px"}}/>
       </Form.Item>
 
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+      {/* <Form.Item {...tailLayout} name="remember" valuePropName="checked">
         <Checkbox className='remberPsw'>记住我</Checkbox>
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item {...tailLayout}>
-        <Button className='submitBtn' type="primary" htmlType="submit">
+        <Button className='submitBtn' type="primary" htmlType="submit" className="loginBtn">
           登录
         </Button>
       </Form.Item>
     </Form>
+    </div>
   );
 };
 

@@ -5,6 +5,7 @@ import AlterGuest from '../../compomemnt/alterGuest/AlterGuest'
 import AlterPsw from '../../compomemnt/alterPsw/AlterPsw'
 import Nav from '../../compomemnt/navigation/Nav'
 import Headbar from '../../compomemnt/headbar/Headbar'
+import MyMessage from '../mymessage/MyMessage'
 import './style.css'
 
 
@@ -25,6 +26,7 @@ function Person() {
                         <Route path='/person/' exact component={Guest}></Route>
                         <Route path='/person/altrInformation' component={AlterGuest}></Route>
                         <Route path='/person/alterPassword' component={AlterPsw}></Route>
+                        <Route path='/person/myMessage' component={MyMessage}></Route>
                         <Redirect from={"*"} to={'/person/'} />                    
                     </div>
                     </div>

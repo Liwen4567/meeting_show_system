@@ -13,7 +13,8 @@ const devServerConfig = () => config => {
     compress: true,
     proxy: {
       '/api': {
-        target: 'http://120.24.93.68:8080/', //目标地址，记得替换
+        //target: 'http://202.202.43.92/api/',//发布用 
+        target: 'http://120.24.93.68:8080/',//测试用
         changeOrigin: true,
         pathRewrite: {
           '^/api': '',

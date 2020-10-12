@@ -1,13 +1,14 @@
-//活动页面
+//负责嘉宾页面
 
 import React, {
     Component, useState,createContext, useEffect
 } from 'react';
 import Headbar from '../../compomemnt/headbar/Headbar'
-import TimeList from '../../compomemnt/timeList/TimeList'
-import DetailActive from '../../compomemnt/detailActive/DetailActive'
+import GuestTimeList from '../../compomemnt/guestTimeList/GuestTimeList'
+import GuestDetailActive from '../../compomemnt/guestDetailActive/GuestDetailActive'
 import { Layout } from 'antd';
-import style from './Active.module.css'
+import style from './MyGuest.module.css'
+import GuestList from '../../compomemnt/guestList/GuestList'
 
 import {
     HashRouter,
@@ -19,8 +20,9 @@ import {
 
 export const IdContext = createContext()
 
-function Active() {
+function MyGuest() {
     const [activeId,setActiveId] = useState(9999)
+    const [guestId, setGuestId] = useState(9999)
     
     // useEffect(()=>{
     //     console.log(activeId)
@@ -28,8 +30,12 @@ function Active() {
 
     const value = {
         activeId: activeId,
+        guestId: guestId,
         changeId: (e)=>{
             setActiveId(e)
+        },
+        changeGuestId: (e)=>{
+            setGuestId(e)
         }
     }
 
@@ -40,11 +46,12 @@ function Active() {
                     
 
                     <IdContext.Provider value={value}>
-                        <TimeList/>
-                        <DetailActive/>
+                        <GuestList/>
+                        <GuestTimeList/>
+                        <GuestDetailActive/>
                     </IdContext.Provider> 
                 </div>
     )
 }
 
-export default Active
+export default MyGuest

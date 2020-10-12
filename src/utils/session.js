@@ -1,3 +1,4 @@
+//常用方法
 const ADMINTOKEN = 'adminToken'
 const ID = 'id'
 const USERNAME = 'userName'

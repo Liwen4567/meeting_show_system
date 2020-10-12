@@ -1,0 +1,42 @@
+.bodyContainer{
+    width: 780px;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-items: center;
+    margin-top: 10px;
+}
+
+.boxContainer{
+    margin-top: 15px;
+}
+
+.container{
+    width: 780px;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-items: center;
+    margin-top: 10px;
+}
+
+.message_left{
+    width: 500px;
+    height: 600px;
+    margin-left: 50px;
+    overflow-y: auto;
+}
+
+.Panel{
+    position: relative;
+}
+
+.btn {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}

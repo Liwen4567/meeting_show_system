@@ -9,6 +9,7 @@ import Active from './pages/active/Active'
 import Login from './pages/login/Login'
 import Person from './pages/personInformation/Person'
 import MyRouter from './router/myRouter'
+import 'lib-flexible'
 
 
 import { routes } from './router/myRouter';

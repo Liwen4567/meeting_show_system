@@ -1,0 +1,22 @@
+.container{
+    margin-top: 20px;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 780px;
+    background-color: #fff;
+}
+.h2{
+    color:rgb(110, 183, 252);
+}
+.ul{
+    width: 780px;
+    overflow-x: auto;
+}
+.li{
+    margin-right: 20px;
+    text-align: center;
+}

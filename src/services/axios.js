@@ -4,13 +4,15 @@ import axios from 'axios'
 import { message } from 'antd';
 import {getToken} from '../utils/session.js'
 
-const instance = axios.create({
-  baseURL: 'http://120.24.93.68:8080/', // 请求地址/api
+export const instance = axios.create({
+  baseURL: 'http://202.202.43.92/api/', //发布用
+  //baseURL: 'http://120.24.93.68:8080/', //测试用
   timeout: 5000, //请求超时时间
   withCredentials: true,  // 是否允许跨域使用cookies
   //headers: {'X-Custom-Header': 'foobar'} // 设置请求头
   //headers: {'token': getToken()} // 设置请求头
 });
+
 
 //封装增删改查方法
 export const get = (url, params)=>{
@@ -28,13 +30,16 @@ export const put = (url, data)=>{
 }
 
 export const del = (url, data)=>{
-  return instance.delect(url, data)
+  return instance.delete(url, data)
 }
 
 //请求拦截
 instance.interceptors.request.use(config => {
     // 发送请求前做什么
     config.headers.token = getToken()
+    // if(config.method == "post"){
+    //   config.data = JSON.stringify(config.data)
+    // }
     return config
   },
   error => {

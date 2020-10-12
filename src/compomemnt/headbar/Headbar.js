@@ -68,10 +68,16 @@ function Headbar(params) {
         <img src={logo} className={style.img} />
         <ul>
           <li>
-            <NavLink to={'/active'} activeClassName={style.nowkey}><ContactsTwoTone />   我的活动</NavLink>
+            <NavLink to={'/active'} activeClassName={style.nowkey}><ContactsTwoTone />   我的任务</NavLink>
           </li>
           <li>
-            <NavLink to={'/person'} activeClassName={style.nowkey}><IdcardTwoTone />   我的信息</NavLink>
+            <NavLink to={'/guest'} activeClassName={style.nowkey}><IdcardTwoTone />   我的嘉宾</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/person'} activeClassName={style.nowkey}><IdcardTwoTone />   个人信息</NavLink>
+          </li>
+          <li>
+            <NavLink to={'/myMessage'} activeClassName={style.nowkey}><IdcardTwoTone />   我的消息</NavLink>
           </li>
           <li className={style.avatar_li}>
             <Dropdown overlay={menu} placement="bottomCenter">

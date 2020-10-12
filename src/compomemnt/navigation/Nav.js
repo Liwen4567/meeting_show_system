@@ -1,3 +1,4 @@
+//我的信息侧边导航栏
 import { Menu, Modal } from 'antd';
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom'
@@ -9,6 +10,7 @@ import {
   PieChartOutlined,
   SettingOutlined,
   BellOutlined,
+  LogoutOutlined
 } from '@ant-design/icons';
 
 function Nav(props) {
@@ -53,7 +55,7 @@ function Nav(props) {
             <Menu.Item key="3" icon={<SettingOutlined />}><Link to={'/person/alterPassword'}>修改密码</Link></Menu.Item>
 
             {/* 无法跳转 */}
-            <Menu.Item key="4" onClick={()=>{logout()}} icon={<BellOutlined />}><a>退出登录</a></Menu.Item>
+            <Menu.Item key="4" onClick={()=>{logout()}} icon={<LogoutOutlined />}><a>退出登录</a></Menu.Item>
         </Menu>
       </div>
     )
