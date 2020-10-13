@@ -1,11 +1,12 @@
 //已读消息组件
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useEffect, useState, useContext } from 'react';
 import style from './OldMessage.module.css'
 import { getOldMessage, delectMessage } from '../../services/api'
 import { Collapse, Button, message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import {getId} from '../../utils/session'
 import axios from 'axios'
+
 
 const { Panel } = Collapse
 const { confirm } = Modal;
@@ -14,63 +15,79 @@ const { confirm } = Modal;
 function OldMessage() {
   const [msgList, setMsgList] = useState([])
 
+  //刷新页面
+  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
+    refresh && setTimeout(() => setRefresh(false))
     getOldMessage(getId(),true).then(res => {
       if (res.code == 0) {
         //message.success("删除成功")
         setMsgList(res.data)
       }
-      console.log(res)
+      //console.log(res)
     }).catch(err => {
       message.error(err.msg || "请求失败")
     })
-    // setMsgList([
-    //   {
-    //     "id":1,
-    //     "fromUser":"发送用户id",
-    //     "toUser":"接受用户id",
-    //     "content":"内容",
-    //     "create_time":"发送时间",
-    //     "read":"是否已读"
-    // },
-    // {
-    //   "id":2,
-    //   "fromUser":"发送用户id",
-    //   "toUser":"接受用户id",
-    //   "content":"内容",
-    //   "create_time":"发送时间",
-    //   "read":"是否已读"
-    // },{
-    //   "id":3,
-    //   "fromUser":"发送用户id",
-    //   "toUser":"接受用户id",
-    //   "content":"内容",
-    //   "create_time":"发送时间",
-    //   "read":"是否已读"
-    // },{
-    //   "id":0,
-    //   "fromUser":"发送用户id",
-    //   "toUser":"接受用户id",
-    //   "content":"内容",
-    //   "create_time":"发送时间",
-    //   "read":"是否已读"
-    // },{
-    //   "id":0,
-    //   "fromUser":"发送用户id",
-    //   "toUser":"接受用户id",
-    //   "content":"内容",
-    //   "create_time":"发送时间",
-    //   "read":"是否已读"
-    // },{
-    //   "id":0,
-    //   "fromUser":"发送用户id",
-    //   "toUser":"接受用户id",
-    //   "content":"内容",
-    //   "create_time":"发送时间",
-    //   "read":"是否已读"
-    // },
-    // ])
-  }, [])
+  }, [refresh])
+  const doRefresh = () => setRefresh(true)
+
+  // useEffect(() => {
+  //   getOldMessage(getId(),true).then(res => {
+  //     if (res.code == 0) {
+  //       //message.success("删除成功")
+  //       setMsgList(res.data)
+  //     }
+  //     //console.log(res)
+  //   }).catch(err => {
+  //     message.error(err.msg || "请求失败")
+  //   })
+  //   // setMsgList([
+  //   //   {
+  //   //     "id":1,
+  //   //     "fromUser":"发送用户id",
+  //   //     "toUser":"接受用户id",
+  //   //     "content":"内容",
+  //   //     "create_time":"发送时间",
+  //   //     "read":"是否已读"
+  //   // },
+  //   // {
+  //   //   "id":2,
+  //   //   "fromUser":"发送用户id",
+  //   //   "toUser":"接受用户id",
+  //   //   "content":"内容",
+  //   //   "create_time":"发送时间",
+  //   //   "read":"是否已读"
+  //   // },{
+  //   //   "id":3,
+  //   //   "fromUser":"发送用户id",
+  //   //   "toUser":"接受用户id",
+  //   //   "content":"内容",
+  //   //   "create_time":"发送时间",
+  //   //   "read":"是否已读"
+  //   // },{
+  //   //   "id":0,
+  //   //   "fromUser":"发送用户id",
+  //   //   "toUser":"接受用户id",
+  //   //   "content":"内容",
+  //   //   "create_time":"发送时间",
+  //   //   "read":"是否已读"
+  //   // },{
+  //   //   "id":0,
+  //   //   "fromUser":"发送用户id",
+  //   //   "toUser":"接受用户id",
+  //   //   "content":"内容",
+  //   //   "create_time":"发送时间",
+  //   //   "read":"是否已读"
+  //   // },{
+  //   //   "id":0,
+  //   //   "fromUser":"发送用户id",
+  //   //   "toUser":"接受用户id",
+  //   //   "content":"内容",
+  //   //   "create_time":"发送时间",
+  //   //   "read":"是否已读"
+  //   // },
+  //   // ])
+  // }, [])
 
   const handleDel = (id) => {
     showDeleteConfirm(Number(id))
@@ -91,8 +108,9 @@ function OldMessage() {
         delectMessage(id).then(res => {
           if (res.code == 0) {
             message.success("删除成功")
+            doRefresh()
           }
-          console.log(res)
+          //console.log(res)
         }).catch(err => {
           message.error(err.msg || "删除失败")
         })

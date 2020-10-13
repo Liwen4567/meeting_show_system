@@ -1,4 +1,4 @@
-//嘉宾时间轴
+//嘉宾活动时间轴
 
 import React, { Component, useContext, useEffect, useState, createContext, useImmer } from 'react';
 import { Steps, message, Modal } from 'antd';
@@ -50,10 +50,11 @@ function GuestTimeList(params) {
       if(res.code == 0){
         setActiveList(res.data.reverse())
         chooesNowStep(res)
+        message.success("已获取嘉宾活动列表")
       } 
-        console.log(res) 
+        //console.log(res) 
     }).catch((err)=>{
-        console.log(err)
+        //console.log(err)
     })
   },[guestId])
 
@@ -107,7 +108,7 @@ function GuestTimeList(params) {
                     }                    
             e.innerHTML = "已完成"
           }
-          console.log(res)
+          //console.log(res)
         }).catch(err => {
           message.error(err.msg || "提交失败")
         })

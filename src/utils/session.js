@@ -1,4 +1,5 @@
-//常用方法
+//缓存处理函数（默认使用sessionStorage）
+
 const ADMINTOKEN = 'adminToken'
 const ID = 'id'
 const USERNAME = 'userName'

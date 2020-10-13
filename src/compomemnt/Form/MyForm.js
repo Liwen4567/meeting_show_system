@@ -1,6 +1,7 @@
+//登录表单
 import React from 'react';
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, message } from 'antd';
 import { login } from '../../services/api.js'
 import {setToken} from '../../utils/session.js'
 import {setId,setJob,setMobile,setUserName,setEmail} from '../../utils/session.js'
@@ -37,14 +38,16 @@ function MyForm(props) {
         //此处跳转
         //response.data.user是一个对象，包含{userId, username, mobile, email, job}
         history.push('/active')
+        message.success("登录成功")
       }
     }).catch(error => {
-      console.log(error)
+      //console.log(error)
+      message.error(error.msg||"登录失败")
     })
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    //console.log('Failed:', errorInfo);
   };
 
   return (

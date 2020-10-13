@@ -1,4 +1,4 @@
-//时间轴
+//负责人任务时间轴
 
 import React, { Component, useContext, useEffect, useState, createContext, useImmer } from 'react';
 import { Steps, message, Modal } from 'antd';
@@ -48,10 +48,11 @@ function TimeList(params) {
       if(res.code == 0){
         setActiveList(res.data.reverse())
         chooesNowStep(res)
+        //message.success("已获取任务列表")
       } 
         //console.log(res) 
     }).catch((err)=>{
-        console.log(err)
+        //console.log(err)
     })
   },[])
 
@@ -80,7 +81,7 @@ function TimeList(params) {
   
 
   const handleFinish = (e,id)=>{
-    showConfirm(Number(id))
+    showConfirm(e,Number(id))
   }
 
 
@@ -106,7 +107,7 @@ function TimeList(params) {
                     }                    
             e.innerHTML = "已完成"
           }
-          console.log(res)
+          //console.log(res)
         }).catch(err => {
           message.error(err.msg || "提交失败")
         })
@@ -164,6 +165,7 @@ function TimeList(params) {
                     height: 20 + "px",
                     width: 60 + "px"
                   }} onClick={(e)=>{
+                    //console.log(e.target.className)
                     handleFinish(e.target, e.target.className)
                   }}>{item.complete?"已完成":"确认完成"}</button>
                   </>

@@ -1,3 +1,4 @@
+/*全局css样式，默认所有页面组件都引用（无再需在代码中引入）*/
 html,
 body {
     /* background-image: linear-gradient(to bottom, rgb(250, 245, 245), rgb(255, 255, 255)); */

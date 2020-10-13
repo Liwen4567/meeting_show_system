@@ -1,3 +1,4 @@
+//个人信息页面
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Guest from '../../compomemnt/guestInformation/Guest'

@@ -1,11 +1,12 @@
 //我的消息侧边导航栏
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import {clear} from '../../utils/session.js'
 import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { Spin, Collapse, Button, Modal, Input, Menu, message } from 'antd';
+import { Spin, Collapse, Button, Modal, Input, Menu, message, Badge } from 'antd';
 import {sendMessage} from '../../services/api'
 import {getId} from '../../utils/session'
+import {messageNumContext} from '../../pages/mymessage/MyMessage'
 
 import {
   UserOutlined,
@@ -17,6 +18,10 @@ import {
 function Nav(props) {
     const [current, setCurrent] = useState('1')
     const [messageText, setMessageText] = useState("")
+    const { messageNum, changeMessageNum } = useContext(messageNumContext)
+    // useEffect(()=>{
+    //   console.log(messageNum)
+    // },[messageNum])
     function handleClick(e){
         setCurrent(e.key)
     }
@@ -34,10 +39,10 @@ function Nav(props) {
             if(res.code == 0){
                 message.success("反馈成功")
             }
-            console.log(res)
+            //console.log(res)
         }).catch(err=>{
             message.error(err.msg||"提交失败")
-            console.log(err)
+            //console.log(err)
         })
     }
 
@@ -74,7 +79,7 @@ function Nav(props) {
           selectedKeys={[current]}
           mode="inline"
         >
-            <Menu.Item key="1" icon={<CommentOutlined />}><Link to={'/myMessage/'}>未读消息</Link></Menu.Item>
+            <Menu.Item key="1" icon={<CommentOutlined />}><Badge count={messageNum} offset={[5,0]}><Link to={'/myMessage/'}>未读消息</Link></Badge></Menu.Item>
             <Menu.Item key="2" icon={<MessageOutlined />}><Link to={'/myMessage/oldMessage'}>已读消息</Link></Menu.Item>
             <Menu.Item key="3" icon={<EditOutlined />}><a onClick={()=>{setIsModelShow(true)}}>我要反馈</a></Menu.Item>
         </Menu>

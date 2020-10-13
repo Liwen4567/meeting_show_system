@@ -1,3 +1,4 @@
+//修改用户信息组件
 import React, {useState, useEffect} from 'react';
 import { Input, Button, message } from 'antd';
 import {getGuest, alterGuest} from '../../services/api.js'
@@ -35,7 +36,7 @@ function AlterGuest(){
 
     function handleClick(){
         alterGuest(getId, userName, mobile, email, job).then(response => {
-            console.log('成功',response)
+            //console.log('成功',response)
             //console.log(userName,mobile,email,job)
             //请求成功响应
             if(response.code===0){
@@ -48,7 +49,8 @@ function AlterGuest(){
                 message.error(response.msg||"修改失败")
             }
         }).catch(error => {
-            console.log('失败',error)
+            //console.log('失败',error)
+            message.error(error.msg||"修改失败")
         })
     }
 

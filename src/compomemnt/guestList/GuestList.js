@@ -1,3 +1,4 @@
+//负责的嘉宾列表
 import React, { Component, useState,useContext, useEffect } from 'react';
 import style from './GuestList.module.css'
 import { Avatar, message } from 'antd'
@@ -14,8 +15,9 @@ function GuestList (){
             if(res.data){
                 setGuestList(res.data)
                 changeGuestId(res.data[0].userId)
+                //message.success("已获取所有负责嘉宾")
             }
-            console.log(res)
+            //console.log(res)
         }).catch(err=>{
             //message.error(err.msg||"获取嘉宾失败")
         })

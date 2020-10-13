@@ -1,6 +1,6 @@
 //顶部导航bar
 
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import { Menu, Avatar, Modal,Dropdown } from 'antd';
 import style from './Headbar.module.css'
 import { NavLink, Router, Route, useHistory, Link } from 'react-router-dom'
@@ -13,7 +13,6 @@ import { getUserName } from '../../utils/session'
 
 function Headbar(params) {
   const [nowkey, setNowkey] = useState('active')
-
   const handleClick = e => {
     setNowkey(e.key)
   };

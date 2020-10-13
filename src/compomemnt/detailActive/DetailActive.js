@@ -1,7 +1,7 @@
-//详细活动信息
+//负责人详细任务信息
 
 import React, { Component, useEffect, useContext, useState } from 'react';
-import { Breadcrumb, Card, Input } from 'antd';
+import { Breadcrumb, Card, Input, message } from 'antd';
 import '../.././style/global.css'
 import style from './DetailActive.module.css'
 import { getActive, getDetailActive } from '../../services/api'
@@ -30,6 +30,9 @@ function DetailActive(params) {
                     //     "active": null,
                     //     "room": []
                     // }
+                    if(res.code == 0 && activeId != 9999){
+                        message.success("已获取任务详情")
+                    }
                     if(res.data.active != null){                       
                         setDetailList_active([res.data.active])
                     }else{
@@ -42,7 +45,8 @@ function DetailActive(params) {
                     
                     
                 }).catch((err) => {
-                    console.log(err)
+                    //console.log(err)
+                    //message.error(err.msg||"获取失败")
                 })
             //console.log("已获取新数据")
         }
@@ -59,9 +63,9 @@ function DetailActive(params) {
                         <Breadcrumb.Item onClick={() => { setShowWhat(2) }}>
                             <span className={showWhat == 2 ? style.activeSpan : style.span}>司机</span>
                         </Breadcrumb.Item>
-                        <Breadcrumb.Item onClick={() => { setShowWhat(3) }}>
+                        {/* <Breadcrumb.Item onClick={() => { setShowWhat(3) }}>
                             <span className={showWhat == 3 ? style.activeSpan : style.span}>房间</span>
-                        </Breadcrumb.Item>
+                        </Breadcrumb.Item> */}
                         <Breadcrumb.Item onClick={() => { setShowWhat(4) }}>
                             <span className={showWhat == 4 ? style.activeSpan : style.span}>志愿者</span>
                         </Breadcrumb.Item>
@@ -83,7 +87,7 @@ function DetailActive(params) {
                                         <span>地点:<Input className={style.input} value={item.location} /></span>
                                         <span>开始时间:<Input className={style.input} value={item.startTime} /></span>
                                         <span>结束时间:<Input className={style.input} value={item.endTime} /></span>
-                                        <span>内容:<TextArea className={style.input} value={item.content} /></span>
+                                        <span>内容:<TextArea autoSize={{ minRows: 2}} className={style.input} value={item.content} /></span>
                                     </Card>
                                     </div>
                                 </div>
@@ -111,7 +115,7 @@ function DetailActive(params) {
                             })
 
                     }
-                    {
+                    {/* {
                         showWhat == 3 &&
                         detailList_room.map((item, index) => {
                             return (
@@ -126,10 +130,7 @@ function DetailActive(params) {
                                 </div>
                             )
                         })
-                        
-
-
-                    }
+                    } */}
                     {
                         showWhat == 4 &&
                             detailList_volunteer.map((item, index) => {

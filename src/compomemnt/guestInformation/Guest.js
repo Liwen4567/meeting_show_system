@@ -1,3 +1,4 @@
+//用户信息
 import React, {useEffect, useState} from 'react';
 import { Input } from 'antd';
 import {getGuest} from '../../services/api.js'
@@ -27,7 +28,7 @@ function Guest(){
                 setMyJob(data.job)
                 setJob(data.job)
             }).catch(error => {
-                console.log(error)
+                //console.log(error)
             })
         }
     },[])

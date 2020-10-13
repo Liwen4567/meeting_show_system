@@ -5,7 +5,8 @@ import { message } from 'antd';
 import {getToken} from '../utils/session.js'
 
 export const instance = axios.create({
-  baseURL: 'http://202.202.43.92/api/', //发布用
+  baseURL: 'http://70v.cqupt.edu.cn/', //域名地址
+  //baseURL: 'http://202.202.43.92/api/',//发布用
   //baseURL: 'http://120.24.93.68:8080/', //测试用
   timeout: 5000, //请求超时时间
   withCredentials: true,  // 是否允许跨域使用cookies
@@ -53,7 +54,7 @@ instance.interceptors.request.use(config => {
 instance.interceptors.response.use(config => {
     // 接收前做什么
     const  code  = config.data.code;
-    console.log(code)
+    //console.log(code)
     if(code == 200 || code == 0){
         //message.success(config.data.msg || "完成")
         return(config.data)
@@ -65,7 +66,7 @@ instance.interceptors.response.use(config => {
   },
   error => {
     // 在此定义请求错误需要做什么
-    console.log(error)
+    //console.log(error)
     return Promise.reject(error)
   });
 

@@ -1,3 +1,4 @@
+//修改用户密码组件
 import React, { useState } from 'react';
 import { Input, Button, message } from 'antd';
 import {withRouter,useHistory} from 'react-router-dom'
@@ -13,7 +14,7 @@ function AlterPsw(props){
     const [isOldOk, setIsOldOk] =useState(true)
     function handleClick(){
         alterPsw(oldPsw, newPsw).then(response => {
-            console.log(response)
+            //console.log(response)
             //
             if(response.code == 0){
                 message.success("修改成功")
@@ -23,7 +24,8 @@ function AlterPsw(props){
                 message.error(response.msg||'修改失败')
             }        
         }).catch(error => {
-            console.log('失败',error)
+            //console.log('失败',error)
+            message.error(error.msg||'修改失败')
         })
     }
 
