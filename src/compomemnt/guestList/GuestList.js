@@ -86,12 +86,15 @@ function GuestList (){
                     {
                         guestList.map((item,index)=>{
                             return(
-                                <il key={index} className={style.li} >
+                                <il key={index} className={style.li} on onClick={e=>{
+                                    changeGuestId(item.userId)
+                                    //console.log(item.userId)
+                                }}>
                                     <div className={item.userId} >
                                     <Avatar size={60} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                                     <br/>
                                     <a className={item.userId}
-                                       onClick={(e)=>{changeGuestId(Number(e.target.className))}}
+                                    //    onClick={(e)=>{changeGuestId(Number(e.target.className))}}
                                     >{item.username}</a>
                                     </div>
                                 </il>

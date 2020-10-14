@@ -10,5 +10,12 @@
 
 .h2{
     text-align: center;
-    color: rgb(110, 183, 252);
+    color: rgb(95, 169, 238);
+}
+.a{
+    margin-top: 15px;
+    position: absolute;
+    right: 10px;
+    color:  rgb(95, 169, 238);
+    cursor: pointer;
 }

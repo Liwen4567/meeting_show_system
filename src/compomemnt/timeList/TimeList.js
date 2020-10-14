@@ -1,6 +1,6 @@
 //负责人任务时间轴
 
-import React, { Component, useContext, useEffect, useState, createContext, useImmer } from 'react';
+import React, { Component, useContext, useEffect, useState, createContext } from 'react';
 import { Steps, message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import '../.././style/global.css'
@@ -9,6 +9,7 @@ import { getActive, getDetailActive, getGuestActive, FinishActive} from '../../s
 import { HistoryOutlined } from '@ant-design/icons'
 import {IdContext} from '../../pages/active/Active'
 import { getId } from '../../utils/session'
+import { useImmer } from "use-immer";
 
 const { confirm } = Modal;
 
@@ -18,6 +19,8 @@ function TimeList(params) {
   const [activeList, setActiveList] = useState([])
   const [nowStep, setNowStep] = useState(0)
   const {activeId, changeId} = useContext(IdContext)
+  let a = new Array(100).fill(false)
+  const [isOpenARR, setIsOpenARR] = useImmer(a) 
    
   
    useEffect(()=>{
@@ -46,7 +49,7 @@ function TimeList(params) {
     // ]
     //   }
       if(res.code == 0){
-        setActiveList(res.data.reverse())
+        setActiveList(res.data)
         chooesNowStep(res)
         //message.success("已获取任务列表")
       } 
@@ -62,6 +65,7 @@ function TimeList(params) {
     for(let i = 0;i<res.data.length;i++){
       if(res.data[i].startTime.replace(/-/g,"").replace(/ /g,"").replace(/:/g,"")>=nowData){
          a = i    
+         break
       }
     }
     if(a==-1){
@@ -144,7 +148,14 @@ function TimeList(params) {
                 subTitle={`${item.startTime}---${item.endTime}`} 
                 description={
                   <>
-                  {item.content}
+                  {
+                    isOpenARR[index]?item.content:item.content.substring(0, 40)
+                  }
+                  <br/>
+                <a className={style.a} onClick={e=>{
+                  setIsOpenARR(isOpenARR=>{isOpenARR[index] = !isOpenARR[index]})
+                  //console.log(isOpenARR[index])
+                }}>{isOpenARR[index]?"收起":"展开"}</a>
                   <hr/>
                   <button 
                   className={item.id}

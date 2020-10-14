@@ -70,7 +70,7 @@ function Headbar(params) {
             <NavLink to={'/active'} activeClassName={style.nowkey}><ContactsTwoTone />   我的任务</NavLink>
           </li>
           <li>
-            <NavLink to={'/guest'} activeClassName={style.nowkey}><IdcardTwoTone />   我的嘉宾</NavLink>
+            <NavLink to={'/guest'} activeClassName={style.nowkey}><IdcardTwoTone />   负责嘉宾</NavLink>
           </li>
           <li>
             <NavLink to={'/person'} activeClassName={style.nowkey}><IdcardTwoTone />   个人信息</NavLink>

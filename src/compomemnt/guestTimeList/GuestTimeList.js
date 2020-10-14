@@ -1,6 +1,6 @@
 //嘉宾活动时间轴
 
-import React, { Component, useContext, useEffect, useState, createContext, useImmer } from 'react';
+import React, { Component, useContext, useEffect, useState, createContext } from 'react';
 import { Steps, message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import '../.././style/global.css'
@@ -9,6 +9,7 @@ import { getActive, getDetailActive, getGuestActive, FinishActive} from '../../s
 import { HistoryOutlined } from '@ant-design/icons'
 import {IdContext} from '../../pages/myGuest/MyGuest'
 import { getId } from '../../utils/session'
+import { useImmer } from "use-immer";
 
 const { confirm } = Modal;
 
@@ -18,44 +19,49 @@ function GuestTimeList(params) {
   const [activeList, setActiveList] = useState([])
   const [nowStep, setNowStep] = useState(0)
   const {activeId, changeId, guestId} = useContext(IdContext)
+  let a = new Array(100).fill(false)
+  const [isOpenARR, setIsOpenARR] = useImmer(a) 
+  
    
   
    useEffect(()=>{
-    getActive(guestId)
-    .then((res)=>{
-    //   res = {
-    //     "msg": "success",
-    // "code": 0,
-    // "data": [
-    //     {
-    //         "id": 1,
-    //         "location": "研究中心",
-    //         "title": "参观",
-    //         "content": "由张老师带队参观研究中心",
-    //         "startTime": "2020-10-04 12:44:11",
-    //         "endTime": "2020-10-05 12:44:14",
-    //           "complete": true,
-    //     },
-    //     {
-    //         "id": 2,
-    //         "location": "校史馆",
-    //         "title": "参观校史馆",
-    //         "content": "校长带领参观校史馆",
-    //         "startTime": "2020-10-07 12:51:29",
-    //         "endTime": "2020-10-08 12:51:34",
-    //           "complete": false,
-    //     }
-    // ]
-    //   }
-      if(res.code == 0){
-        setActiveList(res.data.reverse())
-        chooesNowStep(res)
-        message.success("已获取嘉宾活动列表")
-      } 
-        //console.log(res) 
-    }).catch((err)=>{
-        //console.log(err)
-    })
+     if(guestId!=9999){
+      getActive(guestId)
+      .then((res)=>{
+      //   res = {
+      //     "msg": "success",
+      // "code": 0,
+      // "data": [
+      //     {
+      //         "id": 1,
+      //         "location": "研究中心",
+      //         "title": "参观",
+      //         "content": "由张老师带队参观研究中心",
+      //         "startTime": "2020-10-04 12:44:11",
+      //         "endTime": "2020-10-05 12:44:14",
+      //           "complete": true,
+      //     },
+      //     {
+      //         "id": 2,
+      //         "location": "校史馆",
+      //         "title": "参观校史馆",
+      //         "content": "校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆校长带领参观校史馆",
+      //         "startTime": "2020-10-07 12:51:29",
+      //         "endTime": "2020-10-08 12:51:34",
+      //           "complete": false,
+      //     }
+      // ]
+      //   }
+        if(res.code == 0){
+          message.success("已获取嘉宾活动列表")
+          setActiveList(res.data.reverse())
+          chooesNowStep(res)
+        } 
+          //console.log(res) 
+      }).catch((err)=>{
+          //console.log(err)
+      })
+     }
   },[guestId])
 
   const chooesNowStep = (res) =>{
@@ -64,6 +70,7 @@ function GuestTimeList(params) {
     for(let i = 0;i<res.data.length;i++){
       if(res.data[i].startTime.replace(/-/g,"").replace(/ /g,"").replace(/:/g,"")>=nowData){
          a = i    
+         break
       }
     }
     if(a==-1){
@@ -145,7 +152,14 @@ function GuestTimeList(params) {
                 subTitle={`${item.startTime}---${item.endTime}`} 
                 description={
                   <>
-                  {item.content}
+                  {
+                    isOpenARR[index]?item.content:item.content.substring(0, 40)
+                  }
+                  <br/>
+                <a className={style.a} onClick={e=>{
+                  setIsOpenARR(isOpenARR=>{isOpenARR[index] = !isOpenARR[index]})
+                  //console.log(isOpenARR[index])
+                }}>{isOpenARR[index]?"收起":"展开"}</a>
                   <hr/>
                   <button 
                   className={item.id}

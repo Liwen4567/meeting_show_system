@@ -20,7 +20,8 @@ function GuestDetailActive(params) {
     const [detailList_room, setDetailList_room] = useState([])
     useEffect(
         () => {
-             getDetailActive(activeId)
+            if(activeId!=9999){
+                getDetailActive(activeId)
                 .then((res) => {
                     //console.log(res.data)
                     // res.data = {
@@ -51,6 +52,8 @@ function GuestDetailActive(params) {
                 })
             //console.log("已获取新数据")
         }
+            }
+             
         , [activeId])
     return (
         <div className={style.box}>
