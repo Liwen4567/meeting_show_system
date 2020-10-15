@@ -1,7 +1,7 @@
 //负责人任务时间轴
 
 import React, { Component, useContext, useEffect, useState, createContext } from 'react';
-import { Steps, message, Modal } from 'antd';
+import { Steps, message, Modal, Empty } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import '../.././style/global.css'
 import style from './TimeList.module.css'
@@ -10,6 +10,7 @@ import { HistoryOutlined } from '@ant-design/icons'
 import {IdContext} from '../../pages/active/Active'
 import { getId } from '../../utils/session'
 import { useImmer } from "use-immer";
+import MyEmpty from '../../compomemnt/MyEmpty/MyEmpty'
 
 const { confirm } = Modal;
 
@@ -30,22 +31,22 @@ function TimeList(params) {
     //     "msg": "success",
     // "code": 0,
     // "data": [
-    //     {
-    //         "id": 1,
-    //         "location": "研究中心",
-    //         "title": "参观",
-    //         "content": "由张老师带队参观研究中心",
-    //         "startTime": "2020-10-04 12:44:11",
-    //         "endTime": "2020-10-05 12:44:14"
-    //     },
-    //     {
-    //         "id": 2,
-    //         "location": "校史馆",
-    //         "title": "参观校史馆",
-    //         "content": "校长带领参观校史馆",
-    //         "startTime": "2020-10-07 12:51:29",
-    //         "endTime": "2020-10-08 12:51:34"
-    //     }
+    //     // {
+    //     //     "id": 1,
+    //     //     "location": "研究中心",
+    //     //     "title": "参观",
+    //     //     "content": "由张老师带队参观研究中心",
+    //     //     "startTime": "2020-10-04 12:44:11",
+    //     //     "endTime": "2020-10-05 12:44:14"
+    //     // },
+    //     // {
+    //     //     "id": 2,
+    //     //     "location": "校史馆",
+    //     //     "title": "参观校史馆",
+    //     //     "content": "校长带领参观校史馆",
+    //     //     "startTime": "2020-10-07 12:51:29",
+    //     //     "endTime": "2020-10-08 12:51:34"
+    //     // }
     // ]
     //   }
       if(res.code == 0){
@@ -132,6 +133,9 @@ function TimeList(params) {
       <div className={style.container}>
       <Steps current={nowStep} direction="vertical" size="small" >
         {
+          !activeList.length?
+          <MyEmpty/>
+          :
           activeList.map((item, index)=>{
             return(
               <Step 

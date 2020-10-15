@@ -6,6 +6,7 @@ import { Collapse, Button, message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import {getId} from '../../utils/session'
 import axios from 'axios'
+import MyEmpty from '../../compomemnt/MyEmpty/MyEmpty';
 
 
 const { Panel } = Collapse
@@ -123,7 +124,9 @@ function OldMessage() {
   return (
     <>
       <Collapse className={style.collapse} expandIconPosition='right'>
-        {msgList.map((item, index) => {
+        {
+        !msgList.length?<MyEmpty/>:
+        msgList.map((item, index) => {
           return (
             <Panel
             key={index}

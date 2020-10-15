@@ -7,7 +7,8 @@ import style from './DetailActive.module.css'
 import { getActive, getDetailActive } from '../../services/api'
 import { HistoryOutlined } from '@ant-design/icons'
 import { IdContext } from '../../pages/active/Active'
-import { useImmer } from "use-immer";
+import { useImmer } from "use-immer"
+import MyEmpty from '../../compomemnt/MyEmpty/MyEmpty';
 const { TextArea } = Input;
 
 function DetailActive(params) {
@@ -81,6 +82,7 @@ function DetailActive(params) {
                     {
                         
                         showWhat == 1 && 
+                        // !detailList_active.length?<MyEmpty/>:
                         detailList_active.map((item, index) => {
                             return (
                                 <div key={index} className={style.cardBox}>
@@ -102,6 +104,7 @@ function DetailActive(params) {
                     }
                     {
                         showWhat == 2 &&
+                        // !detailList_car.length?<MyEmpty/>:
                             detailList_car.map((item, index) => {
                                 return (
                                     <div key={index} className={style.cardBox}>
@@ -120,6 +123,7 @@ function DetailActive(params) {
                     }
                     {/* {
                         showWhat == 3 &&
+                        !detailList_room?<MyEmpty/>:
                         detailList_room.map((item, index) => {
                             return (
                                 <div key={index} className={style.cardBox}>
@@ -136,6 +140,7 @@ function DetailActive(params) {
                     } */}
                     {
                         showWhat == 4 &&
+                        // !detailList_volunteer.length?<MyEmpty/>:
                             detailList_volunteer.map((item, index) => {
                                 return (
                                     <div key={index} className={style.cardBox}>
@@ -154,6 +159,7 @@ function DetailActive(params) {
                     }
                     {/* {
                         showWhat == 5 &&
+                        !detailList_other?<MyEmpty/>:
                             detailList_other.map((item, index) => {
                                 return (
                                     <div key={index} className={style.cardBox}>

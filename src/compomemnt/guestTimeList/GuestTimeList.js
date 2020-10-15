@@ -10,6 +10,7 @@ import { HistoryOutlined } from '@ant-design/icons'
 import {IdContext} from '../../pages/myGuest/MyGuest'
 import { getId } from '../../utils/session'
 import { useImmer } from "use-immer";
+import MyEmpty from '../../compomemnt/MyEmpty/MyEmpty'
 
 const { confirm } = Modal;
 
@@ -136,6 +137,9 @@ function GuestTimeList(params) {
       <div className={style.container}>
       <Steps current={nowStep} direction="vertical" size="small" >
         {
+          !activeList.length?
+          <MyEmpty/>
+          :
           activeList.map((item, index)=>{
             return(
               <Step 

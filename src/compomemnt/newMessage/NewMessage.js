@@ -6,6 +6,7 @@ import { Collapse, Button, message, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import {getId} from '../../utils/session'
 import {messageNumContext} from '../../pages/mymessage/MyMessage'
+import MyEmpty from '../../compomemnt/MyEmpty/MyEmpty';
 
 const { Panel } = Collapse
 const { confirm } = Modal;
@@ -19,6 +20,52 @@ function NewMessage() {
     refresh && setTimeout(() => setRefresh(false))
     getNewMessage(getId(),false).then(res=>{
       if(res.code == 0){
+        // res.data = [
+        // //   {
+        // //     "id":1,
+        // //     "fromUser":"发送用户id",
+        // //     "toUser":"接受用户id",
+        // //     "content":"内容",
+        // //     "create_time":"发送时间",
+        // //     "read":"是否已读"
+        // // },
+        // // {
+        // //   "id":2,
+        // //   "fromUser":"发送用户id",
+        // //   "toUser":"接受用户id",
+        // //   "content":"内容",
+        // //   "create_time":"发送时间",
+        // //   "read":"是否已读"
+        // // },{
+        // //   "id":3,
+        // //   "fromUser":"发送用户id",
+        // //   "toUser":"接受用户id",
+        // //   "content":"内容",
+        // //   "create_time":"发送时间",
+        // //   "read":"是否已读"
+        // // },{
+        // //   "id":4,
+        // //   "fromUser":"发送用户id",
+        // //   "toUser":"接受用户id",
+        // //   "content":"内容",
+        // //   "create_time":"发送时间",
+        // //   "read":"是否已读"
+        // // },{
+        // //   "id":0,
+        // //   "fromUser":"发送用户id",
+        // //   "toUser":"接受用户id",
+        // //   "content":"内容",
+        // //   "create_time":"发送时间",
+        // //   "read":"是否已读"
+        // // },{
+        // //   "id":0,
+        // //   "fromUser":"发送用户id",
+        // //   "toUser":"接受用户id",
+        // //   "content":"内容",
+        // //   "create_time":"发送时间",
+        // //   "read":"是否已读"
+        // // },
+        // ]
         setMsgList(res.data)
         changeMessageNum(res.data.length)
       }
@@ -120,7 +167,9 @@ function NewMessage() {
   return (
     <>
       <Collapse className={style.collapse} expandIconPosition='right'>
-        {msgList.map((item, index) => {
+        {
+        !msgList.length?<MyEmpty/>:
+        msgList.map((item, index) => {
           return (
             <Panel
               key={index}
